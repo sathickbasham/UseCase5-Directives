@@ -1,0 +1,77 @@
+<div class="container">
+    <table class = 'table table-striped'>
+        <thead>
+          <tr>
+              <th>Title</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Country</th>
+          </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let user of userList" [ngSwitch]="user.Country">
+        <ng-container *ngIf ="user.Age>30">
+            
+                <tr *ngSwitchCase="'India'" class="table-primary">
+          <td> {{ user.Title }} </td>
+          <td> {{ user.FirstName }} </td>
+          <td> {{ user.LastName }} </td>
+          <td> {{ user.Age }} </td>
+          <td> {{ user.Email }} </td>
+          <td> {{ user.Country }} </td>
+        
+        </tr>
+        <tr *ngSwitchCase="'US'" [ngStyle]="{'background-color':'green'}">
+            <td> {{ user.Title }} </td>
+            <td> {{ user.FirstName }} </td>
+            <td> {{ user.LastName }} </td>
+            <td> {{ user.Age }} </td>
+            <td> {{ user.Email }} </td>
+            <td> {{ user.Country }} </td>
+          
+          </tr>
+    </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+    <p class='h5'>Table with Custom sort pipe</p>
+    <table class = 'table table-striped'>
+      <thead>
+        <tr>
+            <th>Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let user of userList | sortBy:'desc':'FirstName'" >
+      
+          
+              <tr >
+        <td> {{ user.Title }} </td>
+        <td> {{ user.FirstName }} </td>
+        <td> {{ user.LastName }} </td>
+        <td> {{ user.Age }} </td>
+        <td> {{ user.Email }} </td>
+        <td> {{ user.Country }} </td>
+      
+      </tr>
+      <tr >
+          <td> {{ user.Title }} </td>
+          <td> {{ user.FirstName }} </td>
+          <td> {{ user.LastName }} </td>
+          <td> {{ user.Age }} </td>
+          <td> {{ user.Email }} </td>
+          <td> {{ user.Country }} </td>
+        
+        </tr>
+  
+      </ng-container>
+    </tbody>
+  </table>
+</div>
